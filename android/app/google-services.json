@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1059745334452",
+    "project_id": "viamoob",
+    "storage_bucket": "viamoob.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059745334452:android:d29c76ada370fb507cc3e1",
+        "android_client_info": {
+          "package_name": "br.com.viamobb_passageiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059745334452-6nqmqbe3uh68grngfb42o6hvgpf3rp2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5y73vtGiKyv2dtmRMCgLh8Bl2hyxHNLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059745334452-6nqmqbe3uh68grngfb42o6hvgpf3rp2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
