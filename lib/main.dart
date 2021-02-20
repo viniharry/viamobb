@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
        routes: {
-            '/i': (context) => SplashScreen(),
+            '/': (context) => SplashScreen(),
             '/login_page': (context) => LoginScreen(),
             '/register_page': (context) => RegisterScreen(),
             '/cod_page': (context) => CodScreen(),
             
-            '/': (context) => MapScreen(),
+            '/map_page': (context) => MapScreen(),
           }
     );
   }
