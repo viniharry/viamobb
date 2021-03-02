@@ -43,7 +43,7 @@ class ExploreWidget extends StatelessWidget {
             child: Container(
               alignment: Alignment.bottomCenter,
               width: realW(159 + (standardWidth - 159) * currentExplorePercent),
-              height: realH(122 + (720 - 122) * currentExplorePercent),
+              height: realH(113 + (720 - 122) * currentExplorePercent),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

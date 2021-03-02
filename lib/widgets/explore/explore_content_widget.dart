@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:viamobb_passageiro/components/dialog_corrida.dart';
 import 'package:viamobb_passageiro/helpers/ui_helper.dart';
 import 'package:viamobb_passageiro/helpers/validator.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 class ExploreContentWidget extends StatefulWidget {
   final double currentExplorePercent;
@@ -22,6 +23,8 @@ class _ExploreContentWidgetState extends State<ExploreContentWidget> {
   final PageController _pageController = PageController(initialPage: 0);
   final int _numPage = 2;
   int _currentPage = 0;
+
+  final message1 = ['Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?',];
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
@@ -147,13 +150,22 @@ class _ExploreContentWidgetState extends State<ExploreContentWidget> {
                       child: RaisedButton(
                         elevation: 5.0,
                         onPressed: () {
-                          Navigator.popAndPushNamed(context, '/cod_page');
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) => FancyDialog(
+                                  title: 'Escolha sua corrida:',
+                                  ok: 'Pronto!',
+                                  cancel: 'Cancelar',
+                                  okColor: kBlueColor,
+                                  
+                                  descreption: 'Rápida',
+                                  descreption2: 'Normal',));
                         },
                         padding: EdgeInsets.all(15.0),
                         color: kBlueColor,
                         disabledColor: kBlueColor.withAlpha(100),
                         child: Text(
-                          'Enviar código',
+                          'Enviar endereço',
                           style: TextStyle(
                             color: Colors.white,
                             letterSpacing: 1.5,
@@ -244,28 +256,20 @@ class _ExploreContentWidgetState extends State<ExploreContentWidget> {
                     });
                   },
                   children: [
+                   ListView.builder(
+                     itemCount: message1.length,
+                     itemBuilder: (ctx , i){
+                       return Container(
+                         padding: EdgeInsets.all(8),
+                         child: Text(
+                           message1[i],
+                           
+                           ),
+                       );
+                     }
+                     ),
                     ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      children: [
-                        Text('favoritos1'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos1'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos1'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                        Text('favoritos'),
-                      ],
-                    ),
-                    ListView(
+                       padding: EdgeInsets.symmetric(horizontal: 15),
                       children: [
                         Text('recentes'),
                         Text('recentes'),

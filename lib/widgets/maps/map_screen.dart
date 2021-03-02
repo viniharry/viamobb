@@ -2,10 +2,10 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-import 'package:viamobb_passageiro/components/explore_content_widget.dart';
-import 'package:viamobb_passageiro/components/explore_menu_widget.dart';
+import 'package:viamobb_passageiro/widgets/explore/explore_content_widget.dart';
+import 'package:viamobb_passageiro/widgets/menu/explore_menu_widget.dart';
 import 'package:viamobb_passageiro/components/explore_widget.dart';
-import 'package:viamobb_passageiro/components/message_widget.dart';
+import 'package:viamobb_passageiro/widgets/message/message_widget.dart';
 import 'package:viamobb_passageiro/components/teste.dart';
 import 'package:viamobb_passageiro/helpers/ui_helper.dart';
 
