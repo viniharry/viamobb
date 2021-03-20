@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:viamobb_passageiro/components/dialog_Rec_Favo.dart';
 import 'package:viamobb_passageiro/components/dialog_corrida.dart';
 import 'package:viamobb_passageiro/helpers/ui_helper.dart';
 import 'package:viamobb_passageiro/helpers/validator.dart';
@@ -23,8 +24,35 @@ class _ExploreContentWidgetState extends State<ExploreContentWidget> {
   final PageController _pageController = PageController(initialPage: 0);
   final int _numPage = 2;
   int _currentPage = 0;
+  bool isFavorite = true;
 
-  final message1 = ['Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?','Olá tudo bem?',];
+  final message1 = [
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+    'Olá tudo bem?',
+  ];
+
+  final messages2 = [
+    'Recentes',
+    'Recentes',
+    'Recentes',
+    'Recentes',
+    'Recentes',
+    'Recentes',
+    'Recentes',
+    'Recentes',
+    'Recentes',
+  ];
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
@@ -153,13 +181,13 @@ class _ExploreContentWidgetState extends State<ExploreContentWidget> {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) => FancyDialog(
-                                  title: 'Escolha sua corrida:',
-                                  ok: 'Pronto!',
-                                  cancel: 'Cancelar',
-                                  okColor: kBlueColor,
-                                  
-                                  descreption: 'Rápida',
-                                  descreption2: 'Normal',));
+                                    title: 'Escolha sua corrida:',
+                                    ok: 'Pronto!',
+                                    cancel: 'Cancelar',
+                                    okColor: kBlueColor,
+                                    descreption: 'Rápida',
+                                    descreption2: 'Normal',
+                                  ));
                         },
                         padding: EdgeInsets.all(15.0),
                         color: kBlueColor,
@@ -256,28 +284,120 @@ class _ExploreContentWidgetState extends State<ExploreContentWidget> {
                     });
                   },
                   children: [
-                   ListView.builder(
-                     itemCount: message1.length,
-                     itemBuilder: (ctx , i){
-                       return Container(
-                         padding: EdgeInsets.all(8),
-                         child: Text(
-                           message1[i],
-                           
-                           ),
-                       );
-                     }
-                     ),
-                    ListView(
-                       padding: EdgeInsets.symmetric(horizontal: 15),
-                      children: [
-                        Text('recentes'),
-                        Text('recentes'),
-                        Text('recentes'),
-                        Text('recentes'),
-                        Text('recentes'),
-                      ],
-                    ),
+                    ListView.builder(
+                        itemCount: message1.length,
+                        itemBuilder: (ctx, i) {
+                          return Card(
+                            child: Container(
+                              padding: EdgeInsets.all(15),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      InkWell(
+                                          onTap: () => setState(
+                                              () => isFavorite = !isFavorite),
+                                          child: Icon(
+                                            isFavorite
+                                                ? Icons.favorite
+                                                : Icons.favorite_border,
+                                            color: kAmberColor,
+                                          )),
+                                      UIHelper.horizontalSpace(8),
+                                      Text(
+                                        message1[i],
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          letterSpacing: 1.5,
+                                          fontSize: screenWidth * 0.042,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'OpenSans',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                RecFavDialog(
+                                                  //title: '.',
+                                                  titleDescreption:
+                                                      'Motorista:',
+                                                  descreption:
+                                                      'Fulano Fulaninho da Silva Pinto',
+                                                  titleDescreption2:
+                                                      'Endereço:',
+                                                  descreption2:
+                                                      'Rua Imaginária da Nossa Senhora',
+                                                  titleDescreption3:
+                                                      'Distância:',
+                                                  descreption3: '25 km',
+                                                  titleDescreption4: 'Valor:',
+                                                  descreption4: 'R\$ 18,63',
+                                                  ok: 'Repetir!',
+                                                  cancel: 'CANCELAR',
+                                                  okColor: kBlueColor,
+                                                ));
+                                      },
+                                      child: Text('Detalhes'))
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                    ListView.builder(
+                        itemCount: message1.length,
+                        itemBuilder: (ctx, i) {
+                          return Card(
+                            child: Container(
+                              padding: EdgeInsets.all(15),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    messages2[i],
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1.5,
+                                      fontSize: screenWidth * 0.042,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'OpenSans',
+                                    ),
+                                  ),
+                                  InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                RecFavDialog(
+                                                  //title: 'Detalhes:',
+                                                  titleDescreption:
+                                                      'Motorista:',
+                                                  descreption: 'Rápida',
+                                                  titleDescreption2:
+                                                      'Endereço:',
+                                                  descreption2: 'Normal',
+                                                  titleDescreption3:
+                                                      'Distância:',
+                                                  descreption3: 'Normal',
+                                                  titleDescreption4: 'Valor:',
+                                                  descreption4: 'Normal',
+                                                  ok: 'Repetir!',
+                                                  cancel: 'Cancelar',
+                                                  okColor: kBlueColor,
+                                                ));
+                                      },
+                                      child: Text('Detalhes'))
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
                   ],
                 ),
                 // child: Row(

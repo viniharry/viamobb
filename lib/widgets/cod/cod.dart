@@ -21,7 +21,7 @@ class _CodScreenState extends State<CodScreen> {
   final TextEditingController pinController = TextEditingController();
 
   final GlobalKey<ScaffoldState> scafolfKey = GlobalKey<ScaffoldState>();
- final FocusNode _pinPutFocusNode = FocusNode();
+  final FocusNode _pinPutFocusNode = FocusNode();
   final TextEditingController phoneEditingController = TextEditingController();
 
   var maskFormatter =
@@ -68,7 +68,7 @@ class _CodScreenState extends State<CodScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Insira o código de 4 dígitos enviado para #Telefone#',
+                        'Insira o código de 6 dígitos enviado para #Telefone#',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
@@ -83,7 +83,7 @@ class _CodScreenState extends State<CodScreen> {
                             children: [
                               _phone(),
                               SizedBox(
-                                height: 20.0,
+                                height: 50.0,
                               ),
                             ],
                           )),
@@ -119,7 +119,7 @@ class _CodScreenState extends State<CodScreen> {
                       ),
                       //UIHelper.verticalSpace(20),
 
-                      UIHelper.verticalSpace(width * 0.5),
+                      UIHelper.verticalSpace(width * 0.1),
                       _buildHelpBtn()
                     ],
                   ),
@@ -134,33 +134,27 @@ class _CodScreenState extends State<CodScreen> {
 
   Widget _phone() {
     return Container(
-      
-      margin: const EdgeInsets.all(20.0),
-      padding: const EdgeInsets.all(20.0),
+      padding: EdgeInsets.only(top: 70),
       child: PinPut(
-        
-        fieldsCount: 4,
+        fieldsCount: 6,
         focusNode: _pinPutFocusNode,
         controller: pinController,
         textStyle: TextStyle(color: Colors.black, fontSize: 28),
-     
-    eachFieldHeight:130,
-    eachFieldWidth: 50,
+        eachFieldHeight: 130,
+        eachFieldWidth: 50,
         submittedFieldDecoration: BoxDecoration(
-
-      border: Border.all(color: kBlueColor),
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(20.0),
-    ),
-    selectedFieldDecoration:BoxDecoration(
-      border: Border.all(color: kAmberColor),
-      borderRadius: BorderRadius.circular(15.0),
-    ),
-    followingFieldDecoration: BoxDecoration(
-      border: Border.all(color:kAmberColor),
-      borderRadius: BorderRadius.circular(5.0),
-    ),
- 
+          border: Border.all(color: kBlueColor),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        selectedFieldDecoration: BoxDecoration(
+          border: Border.all(color: kAmberColor),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        followingFieldDecoration: BoxDecoration(
+          border: Border.all(color: kAmberColor),
+          borderRadius: BorderRadius.circular(5.0),
+        ),
       ),
     );
   }
@@ -249,34 +243,6 @@ class _CodScreenState extends State<CodScreen> {
   //   );
   // }
 
-  Widget _buildSignupBtn() {
-    return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, '/register_page'),
-      child: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: 'Não possui uma conta? ',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: width * 0.04,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            TextSpan(
-              text: 'Cadastre- se',
-              style: TextStyle(
-                color: kAmberColor,
-                fontSize: width * 0.045,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildHelpBtn() {
     return GestureDetector(
       //onTap: () => Navigator.pushNamed(context, '/register_page'),
@@ -303,39 +269,5 @@ class _CodScreenState extends State<CodScreen> {
         ),
       ),
     );
-  }
-
-  void _showDialog() {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Nova senha enviada para:'),
-            content: TextFormField(
-              controller: _newEmailController,
-              keyboardType: TextInputType.emailAddress,
-              validator: (text) {
-                if (text.isEmpty) return "E-mail inválido";
-              },
-              decoration: InputDecoration(
-                  hintText: "Email:",
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
-                  border: InputBorder.none),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('OK'),
-                onPressed: () {
-                  if (_newEmailController.text.isEmpty)
-                    return Text("Digite seu email");
-                  else {
-                    //bloc.recoverPass(_newEmailController.text);
-                  }
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        });
   }
 }

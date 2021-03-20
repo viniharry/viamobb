@@ -145,100 +145,103 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
    screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: screenWidth,
-          height: screenHeight,
-          child: Stack(
-            children: <Widget>[
-              Image.asset(
-                'assets/map.png',
-                width: screenWidth,
-                height: screenHeight,
-                fit: BoxFit.cover,
-              ),
-                 ExploreWidget(
-                currentExplorePercent: currentExplorePercent,
-                currentSearchPercent: currentSearchPercent,
-                animateExplore: animateExplore,
-                isExploreOpen: isExploreOpen,
-                onVerticalDragUpdate: onExploreVerticalUpdate,
-                onPanDown: () => animationControllerExplore?.stop(),
-              ),
-              ExploreContentWidget(
-                currentExplorePercent: currentExplorePercent,
-              ),
+    return WillPopScope(
+      onWillPop: () async => false,
+          child: Scaffold(
+        body: Center(
+          child: SizedBox(
+            width: screenWidth,
+            height: screenHeight,
+            child: Stack(
+              children: <Widget>[
+                Image.asset(
+                  'assets/map.png',
+                  width: screenWidth,
+                  height: screenHeight,
+                  fit: BoxFit.cover,
+                ),
+                   ExploreWidget(
+                  currentExplorePercent: currentExplorePercent,
+                  currentSearchPercent: currentSearchPercent,
+                  animateExplore: animateExplore,
+                  isExploreOpen: isExploreOpen,
+                  onVerticalDragUpdate: onExploreVerticalUpdate,
+                  onPanDown: () => animationControllerExplore?.stop(),
+                ),
+                ExploreContentWidget(
+                  currentExplorePercent: currentExplorePercent,
+                ),
+                  Positioned(
+                  top: screenWidth*0.063,
+                  //bottom: height*0.1,
+                  right:screenWidth *0.05,
+                  child: GestureDetector(
+                    onTap: () {
+                      animateMessage(true);
+                    },
+                    child: Opacity(
+                      opacity: 1,
+                      child: Container(
+                        width: screenWidth*0.15,
+                        height: screenWidth*0.15,
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.only(right: screenWidth*0.034),
+                        child: Icon(
+                          Icons.message_sharp,
+                          color: kBlueColor,
+                          size: screenWidth*0.085,
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(100)
+                                ),
+                            boxShadow: [
+                              BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: 7),
+                            ]),
+                      ),
+                    ),
+                  ),
+                ),
+               
                 Positioned(
-                top: screenWidth*0.063,
-                //bottom: height*0.1,
-                right:screenWidth *0.05,
-                child: GestureDetector(
-                  onTap: () {
-                    animateMessage(true);
-                  },
-                  child: Opacity(
-                    opacity: 1,
-                    child: Container(
-                      width: screenWidth*0.15,
-                      height: screenWidth*0.15,
-                      alignment: Alignment.centerRight,
-                      padding: EdgeInsets.only(right: screenWidth*0.034),
-                      child: Icon(
-                        Icons.message_sharp,
-                        color: kBlueColor,
-                        size: screenWidth*0.085,
+                  top: screenWidth*0.063,
+                  //bottom: height*0.1,
+                  left:screenWidth *0.05,
+                  child: GestureDetector(
+                    onTap: () {
+                      animateMenu(true);
+                    },
+                    child: Opacity(
+                      opacity: 1,
+                      child: Container(
+                        width: screenWidth*0.15,
+                        height: screenWidth*0.15,
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.only(right: screenWidth*0.034),
+                        child: Icon(
+                          Icons.menu,
+                          color: kBlueColor,
+                          size: screenWidth*0.085,
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(100)
+                                ),
+                            boxShadow: [
+                              BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: 7),
+                            ]),
                       ),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(100)
-                              ),
-                          boxShadow: [
-                            BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: 7),
-                          ]),
                     ),
                   ),
                 ),
-              ),
-             
-              Positioned(
-                top: screenWidth*0.063,
-                //bottom: height*0.1,
-                left:screenWidth *0.05,
-                child: GestureDetector(
-                  onTap: () {
-                    animateMenu(true);
-                  },
-                  child: Opacity(
-                    opacity: 1,
-                    child: Container(
-                      width: screenWidth*0.15,
-                      height: screenWidth*0.15,
-                      alignment: Alignment.centerRight,
-                      padding: EdgeInsets.only(right: screenWidth*0.034),
-                      child: Icon(
-                        Icons.menu,
-                        color: kBlueColor,
-                        size: screenWidth*0.085,
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(100)
-                              ),
-                          boxShadow: [
-                            BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: 7),
-                          ]),
-                    ),
-                  ),
-                ),
-              ),
-               TesteWidget(currentMessagePercent: currentMessagePercent, animateMessage: animateMessage),
-               MenuWidget(currentMenuPercent: currentMenuPercent, animateMenu: animateMenu),
-            ],
-          ),
-        )
+                 TesteWidget(currentMessagePercent: currentMessagePercent, animateMessage: animateMessage),
+                 MenuWidget(currentMenuPercent: currentMenuPercent, animateMenu: animateMenu),
+              ],
+            ),
+          )
+        ),
       ),
     );
   }

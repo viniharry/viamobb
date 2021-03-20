@@ -56,10 +56,8 @@ class ExploreWidget extends StatelessWidget {
                   Positioned(
                       top: realH(65 + (-5 * currentExplorePercent)),
                       left: realW(20 + (91 - 49) * currentExplorePercent),
-                      child: GestureDetector(
-                        onTap: () {
-                          animateExplore(!isExploreOpen);
-                        },
+                      child: InkWell(
+                        onTap: () => animateExplore(!isExploreOpen),
                         child: Text(
                           "Escolher destino",
                           style: TextStyle(
@@ -71,10 +69,13 @@ class ExploreWidget extends StatelessWidget {
                   Positioned(
                       top: realH(20 + (60 - 20) * currentExplorePercent),
                       left: realW(60 + (25 - 63) * currentExplorePercent),
-                      child: Icon(
-                        Icons.location_on,
-                        size: realW(34),
-                        color: Colors.black,
+                      child: InkWell(
+                        onTap: () => animateExplore(!isExploreOpen),
+                        child: Icon(
+                          Icons.location_on,
+                          size: realW(34),
+                          color: Colors.black,
+                        ),
                       )),
                   Positioned(
                       top: realH(currentExplorePercent < 0.9
@@ -85,7 +86,6 @@ class ExploreWidget extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {
                           animateExplore(false);
-                         
                         },
                         child: Image.asset(
                           "assets/arrow.png",

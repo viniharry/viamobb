@@ -4,7 +4,9 @@ import 'package:viamobb_passageiro/components/items_menu_widget.dart';
 import 'package:viamobb_passageiro/helpers/ui_helper.dart';
 import 'package:viamobb_passageiro/helpers/validator.dart';
 
-import '../../constants.dart';
+import '../../../constants.dart';
+
+
 
 /// Drawer Menu
 class DataWidget extends StatefulWidget {
@@ -29,16 +31,16 @@ class _DataWidgetState extends State<DataWidget> {
     return widget.currentDataPercent != 0
         ? Positioned(
             left: realW(-358 + 358 * widget.currentDataPercent),
-            top: realH(-355 + 358 * widget.currentDataPercent),
+            top: realH(-205 + 358 * widget.currentDataPercent),
             width: realW(358),
-            height: screenHeight,
+            height: screenHeight*0.773,
             child: Opacity(
               opacity: widget.currentDataPercent,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius:
-                      BorderRadius.only(topRight: Radius.circular(realW(50))),
+                  // borderRadius:
+                  //     BorderRadius.only(topRight: Radius.circular(realW(50))),
                   boxShadow: [
                     BoxShadow(
                         color: Color.fromRGBO(0, 0, 0, 0.16),
@@ -54,62 +56,62 @@ class _DataWidgetState extends State<DataWidget> {
                       child: CustomScrollView(
                         physics: NeverScrollableScrollPhysics(),
                         slivers: <Widget>[
-                          SliverToBoxAdapter(
-                            child: Container(
-                              height: realH(150),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(realW(50))),
-                                  gradient: const LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      colors: [
-                                        Color(0xFF59C2FF),
-                                        Color(0xFF1270E3),
-                                      ])),
-                              child: Stack(
-                                children: <Widget>[
-                                  Positioned(
-                                    left: realW(10),
-                                    bottom: realH(10),
-                                    child: Image.asset(
-                                      "assets/avatar.png",
-                                      width: realH(120),
-                                      height: realH(120),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: realW(60),
-                                    bottom: realH(7),
-                                    child: Image.asset(
-                                      "assets/lable.png",
-                                      width: realH(72),
-                                      height: realH(72),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: realW(135),
-                                    top: realH(90),
-                                    child: DefaultTextStyle(
-                                      style: TextStyle(color: Colors.white),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            "Fulano",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: realW(18)),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                          // SliverToBoxAdapter(
+                          //   child: Container(
+                          //     height: realH(150),
+                          //     decoration: BoxDecoration(
+                          //         borderRadius: BorderRadius.only(
+                          //             topRight: Radius.circular(realW(50))),
+                          //         gradient: const LinearGradient(
+                          //             begin: Alignment.topLeft,
+                          //             colors: [
+                          //               Color(0xFF59C2FF),
+                          //               Color(0xFF1270E3),
+                          //             ])),
+                          //     child: Stack(
+                          //       children: <Widget>[
+                          //         Positioned(
+                          //           left: realW(10),
+                          //           bottom: realH(10),
+                          //           child: Image.asset(
+                          //             "assets/avatar.png",
+                          //             width: realH(120),
+                          //             height: realH(120),
+                          //           ),
+                          //         ),
+                          //         Positioned(
+                          //           left: realW(60),
+                          //           bottom: realH(7),
+                          //           child: Image.asset(
+                          //             "assets/lable.png",
+                          //             width: realH(72),
+                          //             height: realH(72),
+                          //           ),
+                          //         ),
+                          //         Positioned(
+                          //           left: realW(135),
+                          //           top: realH(90),
+                          //           child: DefaultTextStyle(
+                          //             style: TextStyle(color: Colors.white),
+                          //             child: Column(
+                          //               mainAxisSize: MainAxisSize.min,
+                          //               crossAxisAlignment:
+                          //                   CrossAxisAlignment.start,
+                          //               children: <Widget>[
+                          //                 Text(
+                          //                   "Fulano",
+                          //                   style: TextStyle(
+                          //                       fontWeight: FontWeight.bold,
+                          //                       fontSize: realW(18)),
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
                           SliverPadding(
                               padding: EdgeInsets.only(
                                   top: realH(34),
@@ -125,29 +127,29 @@ class _DataWidgetState extends State<DataWidget> {
                                   UIHelper.verticalSpace(20),
                                   _buildPhoneTF(),
                                   UIHelper.verticalSpace(40),
-                                  Container(
-                                    padding: EdgeInsets.all(11.0),
-                                    width: screenWidth / 2,
-                                    child: RaisedButton(
-                                      elevation: 5.0,
-                                      onPressed: () {
+                                  // Container(
+                                  //   padding: EdgeInsets.all(11.0),
+                                  //   width: screenWidth / 2,
+                                  //   child: RaisedButton(
+                                  //     elevation: 5.0,
+                                  //     onPressed: () {
                                         
-                                      },
-                                      padding: EdgeInsets.all(15.0),
-                                      color: kBlueColor,
-                                      disabledColor: kBlueColor.withAlpha(100),
-                                      child: Text(
-                                        'Salvar',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          letterSpacing: 1.5,
-                                          fontSize: screenWidth * 0.042,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'OpenSans',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  //     },
+                                  //     padding: EdgeInsets.all(15.0),
+                                  //     color: kBlueColor,
+                                  //     disabledColor: kBlueColor.withAlpha(100),
+                                  //     child: Text(
+                                  //       'Salvar',
+                                  //       style: TextStyle(
+                                  //         color: Colors.white,
+                                  //         letterSpacing: 1.5,
+                                  //         fontSize: screenWidth * 0.042,
+                                  //         fontWeight: FontWeight.bold,
+                                  //         fontFamily: 'OpenSans',
+                                  //       ),
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ]),
                               )),
                         ],
@@ -156,8 +158,34 @@ class _DataWidgetState extends State<DataWidget> {
 
                     // close button
                     Positioned(
-                      bottom: realH(53),
+                      bottom: double.minPositive,
                       right: 0,
+                      child: GestureDetector(
+                        onTap: () {
+                          widget.animateData(false);
+                        },
+                        child: Container(
+                          width: realW(71),
+                          height: realH(71),
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.only(left: realW(17)),
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.green,
+                            size: realW(34),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.green.withOpacity(0.2),
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(realW(36)),
+                                topLeft: Radius.circular(realW(36))),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: double.minPositive,
+                      
                       child: GestureDetector(
                         onTap: () {
                           widget.animateData(false);
@@ -175,12 +203,12 @@ class _DataWidgetState extends State<DataWidget> {
                           decoration: BoxDecoration(
                             color: Color(0xFFFB5E74).withOpacity(0.2),
                             borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(realW(36)),
-                                topLeft: Radius.circular(realW(36))),
+                                bottomRight: Radius.circular(realW(36)),
+                                topRight: Radius.circular(realW(36))),
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

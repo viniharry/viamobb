@@ -32,6 +32,7 @@ dependencies:
   google_maps_flutter: ^1.1.1
   pinput: ^0.2.0
   dash_chat: ^1.1.15
+  url_launcher: ^5.7.10
 
 
 dev_dependencies:

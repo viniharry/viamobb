@@ -121,7 +121,7 @@ class _TesteWidgetState extends State<TesteWidget> {
                 // ),
                 // close button
                 Positioned(
-                  top: double.minPositive,
+                  top: 20,
                   left: 0,
                   child: GestureDetector(
                     onTap: () {
@@ -134,13 +134,14 @@ class _TesteWidgetState extends State<TesteWidget> {
                       padding: EdgeInsets.only(right: realW(17)),
                       child: Icon(
                         Icons.close,
-                        color: Color(0xFFE96977),
+                        color: Colors.red,
                         size: realW(34),
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xFFFB5E74).withOpacity(0.5),
+                        color: Color(0xFFFB5E74).withOpacity(0.2),
                         borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(realW(36)),
+                            bottomLeft: Radius.circular(realW(36)),
                             topRight: Radius.circular(realW(36))),
                       ),
                     ),

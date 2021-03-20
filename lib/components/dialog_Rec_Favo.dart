@@ -3,12 +3,20 @@ import 'package:viamobb_passageiro/helpers/ui_helper.dart';
 
 const testKeys = [Key("fancyButtons"), Key("flatButtons")];
 
-class FancyDialog extends StatefulWidget {
-  const FancyDialog(
+class RecFavDialog extends StatefulWidget {
+  const RecFavDialog(
       {Key key,
-       this.title,
-      @required this.descreption2,
-      @required this.descreption,
+      //@required this.title,
+      this.descreption2,
+      this.descreption,
+      this.descreption3,
+      this.descreption4,
+      this.titleDescreption2,
+      this.titleDescreption,
+      this.titleDescreption3,
+      this.titleDescreption4,
+      this.titleDescreption5,
+      this.titleDescreption6,
       this.okFun,
       this.cancelFun,
       this.animationType = 1,
@@ -17,13 +25,26 @@ class FancyDialog extends StatefulWidget {
       this.okColor = Colors.pink,
       this.ok = " OK !",
       this.cancel = "Cancel",
-      this.theme = 0 //default theme is fancy
+      this.theme = 0,
+      
+      this.descreption5,
+      this.descreption6 //default theme is fancy
       })
       : super(key: key);
 
-  final String title;
+  //final String title;
   final String descreption;
   final String descreption2;
+  final String descreption3;
+  final String descreption4;
+  final String descreption5;
+  final String descreption6;
+  final String titleDescreption;
+  final String titleDescreption2;
+  final String titleDescreption3;
+  final String titleDescreption4;
+  final String titleDescreption5;
+  final String titleDescreption6;
   final Function okFun;
   final Function cancelFun;
   final int animationType;
@@ -39,16 +60,26 @@ class FancyDialog extends StatefulWidget {
   }
 }
 
-class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
+class GifDialogState extends State<RecFavDialog> with TickerProviderStateMixin {
   AnimationController ac;
   Animation animation;
   double width;
   double height;
   int animationAxis = 0; // 0 for x 1 for y
 
-  String title;
+  //String title;
   String descreption;
   String descreption2;
+  String descreption3;
+  String descreption4;
+  String descreption5;
+  String descreption6;
+  String titleDescreption;
+  String titleDescreption2;
+  String titleDescreption3;
+  String titleDescreption4;
+  String titleDescreption5;
+  String titleDescreption6;
   Function okFun;
   Function cancelFun;
   String gifPath;
@@ -60,9 +91,19 @@ class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
   int package = 0; //0 user assets ,1 package assets
   @override
   void initState() {
-    title = widget.title;
+    //title = widget.title;
     descreption = widget.descreption;
     descreption2 = widget.descreption2;
+    descreption3 = widget.descreption3;
+    descreption4 = widget.descreption4;
+    descreption5 = widget.descreption5;
+    descreption6 = widget.descreption6;
+    titleDescreption = widget.titleDescreption;
+    titleDescreption2 = widget.titleDescreption2;
+    titleDescreption3 = widget.titleDescreption3;
+    titleDescreption4 = widget.titleDescreption4;
+    titleDescreption5 = widget.titleDescreption5;
+    titleDescreption6 = widget.titleDescreption6;
     okFun = widget.okFun;
     cancelFun = widget.cancelFun;
     okColor = widget.okColor;
@@ -151,7 +192,7 @@ class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
 
     assert(MediaQuery.of(context, nullOk: true) != null,
         '\n****context does not contain media query object***\n');
-    assert(title != null, '\n****title is required***\n');
+    //assert(title != null, '\n****title is required***\n');
     assert(descreption != null, '\n****descreption is required***\n');
 
     var image = ClipRRect(
@@ -168,9 +209,9 @@ class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
     );
 
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pop();
-      },
+      // onTap: () {
+      //   Navigator.of(context).pop();
+      // },
       child: Dialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(theme == 0 ? 15 : 0),
@@ -178,7 +219,8 @@ class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         child: Container(
-          width: dialogWidth,
+          padding: EdgeInsets.all(15),
+          width: dialogWidth*2,
           transform: Matrix4.translationValues(
               animationAxis == 0 ? animation.value * width : 0,
               animationAxis == 1 ? animation.value * width : 0,
@@ -192,29 +234,80 @@ class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               //image,
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      color: Colors.black,
-                     fontSize: screenWidth * 0.06,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(5),
+              //   child: Text(
+              //     title,
+              //     style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: screenWidth * 0.06,
+              //         fontWeight: FontWeight.bold),
+              //   ),
+              // ),
+               titleDescreption == null ? Container() :
               Row(
                 children: [
-                  Radio(
-                      value: 0,
-                      groupValue: _radioValue,
-                      onChanged: _handleRadioValueChange),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(titleDescreption),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: Container(
+                        width: realW(180),
+                        child: Text(
+                          descreption,
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: screenWidth * 0.042,
+                          ),
+                          textAlign: TextAlign.justify,
+                          maxLines: 5,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )),
+                ],
+              ),
+               titleDescreption2 == null ? Container() :
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(titleDescreption2),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: Container(
+                        width: realW(180),
+                        child: Text(
+                          descreption2,
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: screenWidth * 0.042,
+                          ),
+                          textAlign: TextAlign.justify,
+                          maxLines: 5,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )),
+                ],
+              ),
+               titleDescreption3 == null ? Container() :
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(titleDescreption3),
+                  ),
                   Padding(
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                       child: Container(
                         child: Text(
-                          descreption2,
-                          style:
-                              TextStyle(color: Colors.grey[600], fontSize: screenWidth * 0.042,),
+                          descreption3,
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: screenWidth * 0.042,
+                          ),
                           textAlign: TextAlign.center,
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,
@@ -222,19 +315,22 @@ class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
                       )),
                 ],
               ),
+              titleDescreption4 == null ? Container() :
               Row(
                 children: [
-                  Radio(
-                      value: 1,
-                      groupValue: _radioValue,
-                      onChanged: _handleRadioValueChange),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(titleDescreption4),
+                  ),
                   Padding(
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                       child: Container(
                         child: Text(
-                          descreption,
-                          style:
-                              TextStyle(color: Colors.grey[600], fontSize: screenWidth * 0.042,),
+                          descreption4,
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: screenWidth * 0.042,
+                          ),
                           textAlign: TextAlign.center,
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,
@@ -272,12 +368,15 @@ class GifDialogState extends State<FancyDialog> with TickerProviderStateMixin {
     return Container(
       child: RaisedButton(
         key: testKeys[0],
-        shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(30.0)),
+       
         color: c,
         child: Text(
           t,
-          style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.042,),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: screenWidth * 0.042,
+            
+          ),
         ),
         onPressed: () {
           f != null ? f() : print("function is null");

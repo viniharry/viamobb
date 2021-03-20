@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:viamobb_passageiro/widgets/cod/cod.dart';
-import 'package:viamobb_passageiro/widgets/dados/data_widget.dart';
 import 'package:viamobb_passageiro/widgets/maps/map_screen.dart';
 import 'package:viamobb_passageiro/widgets/maps/map_screen.dart';
+import 'package:viamobb_passageiro/widgets/menu/dados/data_widget.dart';
 import 'package:viamobb_passageiro/widgets/sign_in/sign_screen.dart';
 import 'package:viamobb_passageiro/widgets/sign_up/sign_up_screen.dart';
 import 'package:viamobb_passageiro/widgets/splash/splash_screen.dart';
@@ -25,15 +25,15 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
        routes: {
-            //'/': (context) => SplashScreen(),
+            '/': (context) => SplashScreen(),
             '/login_page': (context) => LoginScreen(),
             '/register_page': (context) => RegisterScreen(),
             '/cod_page': (context) => CodScreen(),
             '/data_page': (context) => DataWidget(),
 
             
-            //'/map_page': (context) => MapScreen(),
-             '/': (context) => MapScreen(),
+            '/map_page': (context) => MapScreen(),
+             //'/': (context) => MapScreen(),
           }
     );
   }
